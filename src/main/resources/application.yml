@@ -1,17 +1,27 @@
 server:
-  port: 8081   
+  port: 8081
 
 spring:
   datasource:
     url: jdbc:sqlite:tienda1.db
     driver-class-name: org.sqlite.JDBC
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+
   jpa:
+    show-sql: true
     hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.SQLiteDialect
+      ddl-auto: none   # usamos schema.sql
 
   rabbitmq:
     host: localhost
     port: 5672
     username: guest
     password: guest
+
+tienda:
+  id: 1
